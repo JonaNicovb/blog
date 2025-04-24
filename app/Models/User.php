@@ -57,4 +57,9 @@ class User extends Authenticatable
             ->map(fn (string $name) => Str::of($name)->substr(0, 1))
             ->implode('');
     }
+
+    //RELACIONES 
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
 }
