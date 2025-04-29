@@ -36,10 +36,11 @@
                                 </svg>
                                 Editar
                             </a>
-                            <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" 
-                                class="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-red-600 bg-red-200 rounded-md hover:bg-red-300 hover:text-red-800 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600 transition">
+                            <form  action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" 
+                                class="delete-form inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-red-600 bg-red-200 rounded-md hover:bg-red-300 hover:text-red-800 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600 transition">
                                 @csrf
                                 @method('DELETE')
+                               
                                 <button type="submit" class="flex items-center gap-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
@@ -58,6 +59,30 @@
     </div>
 
 
+    @push('js')
+        <script>
+           document.querySelectorAll('.delete-form').forEach(function(form){
+                form.addEventListener('submit', function(e){
+                    e.preventDefault();
+                    
+                    Swal.fire({
+                        title: "¿Estás seguro?",
+                        text: "No podrás revertir esto!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Si, eliminar!",
+                        cancelButtonText: "Cancelar"
+                        }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    });
+                });
+            });
+        </script>
+    @endpush
 
 
 </x-layouts.admin>

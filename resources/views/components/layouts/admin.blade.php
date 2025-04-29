@@ -141,5 +141,8 @@
                 Swal.fire(@json(session('swal')));
             </script>  
         @endif
+
+        @stack('js')
+        
     </body>
 </html>
