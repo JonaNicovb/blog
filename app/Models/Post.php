@@ -3,9 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 
 class Post extends Model
 {
+  use HasFactory;
+
     protected $fillable = [
         'title',
         'slug',
@@ -21,7 +25,7 @@ class Post extends Model
       //CASTEANDO LOS DATOS
       protected $casts = [
          'is_published' => 'boolean',
-         'published_at' => 'datatime',
+         'published_at' => 'datetime',
       ];
 
       //RELACIONES UNO A MUCHO INVERSA

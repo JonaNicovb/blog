@@ -2,10 +2,10 @@
     <div class="flex justify-between items-center mb-4">
         <flux:breadcrumbs>
             <flux:breadcrumbs.item href="{{ route('admin.dashboard') }}">Dashboard</flux:breadcrumbs.item>
-            <flux:breadcrumbs.item>Categorias</flux:breadcrumbs.item>
+            <flux:breadcrumbs.item>Posts</flux:breadcrumbs.item>
         </flux:breadcrumbs>
-        <a class="bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded" href="{{ route('admin.categories.create') }}">
-            Crear Categoria
+        <a class="bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded" href="{{ route('admin.posts.create') }}">
+            Crear Post
         </a>
     </div>
 
@@ -13,22 +13,22 @@
         <table class="w-full text-sm text-left text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-80 backdrop-blur-sm rounded-xl">
             <thead class="text-xs uppercase bg-gray-100 dark:bg-gray-800 dark:text-gray-400">
                 <tr>
-                    <th scope="col" class="px-6 py-4">Categoria ID</th>
+                    <th scope="col" class="px-6 py-4">Post ID</th>
                     <th scope="col" class="px-6 py-4">Nombre</th>
                     <th scope="col" class="px-6 py-4 text-center">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($categories as $category)
+                @foreach ($posts as $post)
                 <tr class="bg-white dark:bg-gray-900 border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800">
                     <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                        {{ $category->id }}
+                        {{ $post->id }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $category->name }}
+                        {{ $post->title }}
                     </td>
                     <td class="px-6 py-4 text-center">
-                        <a href="{{ route('admin.categories.edit', $category->id) }}" 
+                        <a href="{{ route('admin.posts.edit', $post->id) }}" 
                         class="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-gray-600 bg-gray-200 rounded-md hover:bg-gray-300 hover:text-gray-800 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536M9 13l6-6m-6 6L3 21h6l6-6m0-6h.01" />
@@ -36,7 +36,7 @@
                             Editar
                         </a>
 
-                        <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" 
+                        <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST" 
                             class="delete-form inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-red-600 bg-red-200 rounded-md hover:bg-red-300 hover:text-red-800 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600">
                             @csrf
                             @method('DELETE')
@@ -56,6 +56,10 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
+
+    <div class="mt-4">
+        {{ $posts->links() }}
     </div>
 
     @push('js')
