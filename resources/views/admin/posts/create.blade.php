@@ -16,8 +16,7 @@
         <form action="{{route('admin.posts.store')}}" method="post" class="bg-white px-6 py-8 rounded-lg shadow-lg space-y-4">
             @csrf
             <flux:input label="Titulo" name="title" value="{{old('title')}}" />
-            <flux:input label="Contenido" name="content" value="{{old('content')}}" />
-            <flux:input label="Categoria" name="category_id" value="{{old('category_id')}}" />
+           
 
             <div class="flex justify-end gap-4">
                 <a href="{{ route('admin.posts.index') }}" class="btn bg-gray-500 text-white hover:bg-gray-700">
