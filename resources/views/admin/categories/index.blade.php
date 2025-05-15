@@ -4,9 +4,11 @@
             <flux:breadcrumbs.item href="{{ route('admin.dashboard') }}">Dashboard</flux:breadcrumbs.item>
             <flux:breadcrumbs.item>Categorias</flux:breadcrumbs.item>
         </flux:breadcrumbs>
-        <a class="bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded" href="{{ route('admin.categories.create') }}">
-            Crear Categoria
-        </a>
+        <div class="flex items-center gap-3">
+            <a class="bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded" href="{{ route('admin.categories.create') }}">
+                Crear Categoria
+            </a>
+        </div>
     </div>
 
     <div class="relative overflow-x-auto shadow-lg sm:rounded-xl">
